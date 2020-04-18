@@ -1,6 +1,5 @@
 package hu.strong.fish.service;
 
-import hu.strong.fish.dto.TagDTO;
 import hu.strong.fish.model.Tag;
 import hu.strong.fish.model.User;
 import hu.strong.fish.repository.TagRepository;
@@ -17,10 +16,8 @@ public class TagServiceImpl implements TagService {
     @Autowired
     private TagRepository tagRepository;
 
-    public List<TagDTO> getAllTagDTOByUser(User user) {
-        return tagRepository.getAllByUser(user).stream().map(tag -> {
-            return new TagDTO(tag.getId().toString(), tag.getTag());
-        }).collect(Collectors.toList());
+    public List<String> getAllTagNamesByUser(User user) {
+        return tagRepository.getAllByUser(user).stream().map(Tag::getTag).collect(Collectors.toList());
     }
 
     public Tag findTagIfExists(String tagName, User user) {

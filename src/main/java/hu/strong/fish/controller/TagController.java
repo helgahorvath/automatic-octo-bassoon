@@ -1,6 +1,5 @@
 package hu.strong.fish.controller;
 
-import hu.strong.fish.dto.TagDTO;
 import hu.strong.fish.model.User;
 import hu.strong.fish.service.TagServiceImpl;
 import hu.strong.fish.service.UserServiceImpl;
@@ -20,10 +19,10 @@ public class TagController {
 
     @GetMapping("/api/tags")
     public @ResponseBody
-    List<TagDTO> getTags() {
+    List<String> getTags() {
         // TODO real user
         User user = userServiceImpl.getUserByName("joska");
-        return tagServiceImpl.getAllTagDTOByUser(user);
+        return tagServiceImpl.getAllTagNamesByUser(user);
     }
 
 

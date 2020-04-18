@@ -35,7 +35,7 @@ public class PostServiceImpl implements PostService {
                 postDTO.setEditDate(post.getEditDate().toString());
             }
             if (post.getTag() != null) {
-                postDTO.setTags(post.getTag().stream().map(Object::toString).collect(Collectors.toList()));
+                postDTO.setTags(post.getTag().stream().map(Tag::getTag).collect(Collectors.toList()));
             }
             postDTO.setText(post.getText());
             postDTO.setTitle(post.getTitle());
